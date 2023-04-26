@@ -1,0 +1,17 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "a rs school virtual keyboard project by ruslanbek normurodov",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "virtual",
+    "keyboard",
+    "js",
+    "dom"
+  ],
+  "author": "Ruslanbek Normurodov",
+  "license": "ISC"
+}
