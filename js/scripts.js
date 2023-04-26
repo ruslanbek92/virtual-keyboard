@@ -20,3 +20,23 @@ shortcutParag.innerText = 'Language:English';
 container.prepend(heading, textarea, keyboard, description, shortcutParag);
 body.prepend(container);
 // console.log(heading, shortcutParag, description);
+
+class Key {
+  constructor(value) {
+  this.value = value;
+  }
+
+  render() {
+    const key = document.createElement('div');
+    const value = document.createElement('p');
+    key.className = 'key';
+    value.className = 'value';
+    value.innerText = `${this.value}`;
+    key.prepend(value);
+    return key;
+  }
+}
+
+function fillKeyboard() {
+  
+}
