@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    border: 1px solid red;
+}
+
+.heading {
+    text-align: center;
+}
+
+.textarea {
+    width: 100%;
+}
+
