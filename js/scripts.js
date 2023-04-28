@@ -127,21 +127,20 @@ function fillKeyboard() {
   });
 }
 
-function handleCLick(event){
-  
-  console.log(textarea.selectionStart);
+function handleCLick(event) {
   switch (event.target.innerText) {
     case 'Backspace':
-      let arr = textarea.value.split('');
-      arr.length = (arr.length !== 0) ?  arr.length-1 : arr.length;
-      textarea.value = arr.join('');
+      if (textarea.selectionStart !== 0) {
+        textarea.value = textarea.value.slice(0, textarea.selectionStart - 1)
+        + textarea.value.slice(textarea.selectionStart);
+      }
       break;
     case 'Tab':
-      textarea.value = textarea.value + '    ';
+      textarea.value += '    ';
       break;
     case 'Del':
-      textarea.value = textarea.value + '    ';
-      break;  
+      textarea.value += '    ';
+      break;
     default:
       let str1 = textarea.value.slice(0,textarea.selectionStart);
       let str2 = textarea.value.slice(textarea.selectionStart);
@@ -149,9 +148,8 @@ function handleCLick(event){
       textarea.value = str1 + str2;
       break;
   }
-
-
 }
+
 fillKeyboard();
 
 keyboard.addEventListener('click', handleCLick);
