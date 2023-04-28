@@ -131,6 +131,7 @@ function fillKeyboard(caseIndex) {
 
 function handleCLick(event) {
   const cursorPosit = textarea.selectionStart;
+  event.target.classList.add('key_pressed');
   switch (event.target.innerText) {
     case 'Backspace':
       if (textarea.selectionStart !== 0) {
@@ -152,6 +153,7 @@ function handleCLick(event) {
     case 'Caps':
       keyboard.innerHTML = '';
       if (capsOn) { fillKeyboard(0); capsOn = false; } else { fillKeyboard(2); capsOn = true; }
+      
       break;
     case 'Enter':
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
@@ -179,3 +181,4 @@ function handleCLick(event) {
 fillKeyboard(0);
 
 keyboard.addEventListener('click', handleCLick);
+keyboard.addEventListener('animationend', (e) => { e.target.classList.remove('key_pressed') });

@@ -48,9 +48,13 @@ body {
     
     color:#ffffff;
     background-color: rgb(0, 0, 0);
+    cursor: pointer;
     border: 1px solid green;
 }
 
+/* .key:hover {
+    background-color: rgb(181, 184, 184);
+} */
 .key_large {
     flex-basis: 14%;
 }
@@ -61,4 +65,21 @@ body {
 
 .key_space{
     flex-basis: 27.9%;
+}
+
+
+
+@keyframes highlight {
+    from {
+        background-color: rgb(0, 0, 0);
+        transform: scale(1);
+    } to {
+        background-color: rgb(58, 223, 223);
+        transform: scale(0.8);
+    }
+}
+.key_pressed {
+    animation-name: highlight;
+    animation-duration: 0.3s;
+    
 }
