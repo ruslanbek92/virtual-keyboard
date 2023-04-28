@@ -102,6 +102,7 @@ const symbols = [
 ];
 
 let capsOn = false;
+let shiftOn = false;
 function fillKeyboard(caseIndex) {
   symbols.forEach((el) => {
     const key = new Key(el.english[caseIndex]).render();
@@ -126,6 +127,12 @@ function fillKeyboard(caseIndex) {
     }
     keyboard.append(key);
   });
+}
+
+function handleMouseOver(e) {
+console.log(e.target);
+console.log(e.repeat);
+
 }
 
 function handleCLick(event) {
@@ -155,11 +162,22 @@ function handleCLick(event) {
     case 'Enter':
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
       break;
+    case 'Shift':
+      keyboard.innerHTML = '';
+      fillKeyboard(1);
+      shiftOn = true;
+      break;
     default:
       let str1 = textarea.value.slice(0,textarea.selectionStart);
       let str2 = textarea.value.slice(textarea.selectionStart);
       str1 = str1+ event.target.innerText;
       textarea.value = str1 + str2;
+
+      if (shiftOn) {
+        shiftOn = false;
+        keyboard.innerHTML = '';
+        fillKeyboard(0);
+      }
       break;
   }
 }
@@ -167,3 +185,4 @@ function handleCLick(event) {
 fillKeyboard(0);
 
 keyboard.addEventListener('click', handleCLick);
+keyboard.addEventListener('mouseover', handleMouseOver);
