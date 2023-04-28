@@ -128,18 +128,26 @@ function fillKeyboard() {
 }
 
 function handleCLick(event) {
+  const cursorPosit = textarea.selectionStart;
   switch (event.target.innerText) {
     case 'Backspace':
       if (textarea.selectionStart !== 0) {
         textarea.value = textarea.value.slice(0, textarea.selectionStart - 1)
         + textarea.value.slice(textarea.selectionStart);
+        textarea.selectionStart = cursorPosit - 1;
       }
       break;
     case 'Tab':
       textarea.value += '    ';
       break;
     case 'Del':
-      textarea.value += '    ';
+      console.log(textarea.value.length);
+      console.log(textarea.selectionStart);
+      if (textarea.selectionStart < textarea.value.length) {
+        textarea.value = textarea.value.slice(0, textarea.selectionStart)
+        + textarea.value.slice(textarea.selectionStart + 1);
+        textarea.selectionStart = cursorPosit;
+      }
       break;
     default:
       let str1 = textarea.value.slice(0,textarea.selectionStart);
