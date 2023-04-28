@@ -35,75 +35,76 @@ class Key {
 }
 
 const symbols = [
-  { english: ['`', '~'], russian: ['ё', 'Ё'] },
-  { english: ['1', '!'], russian: ['1', '!'] },
-  { english: ['2', '@'], russian: ['2', '"'] },
-  { english: ['3', '#'], russian: ['3', '№'] },
-  { english: ['4', '$'], russian: ['4', ';'] },
-  { english: ['5', '%'], russian: ['5', '%'] },
-  { english: ['6', '^'], russian: ['6', ':'] },
-  { english: ['7', '&'], russian: ['7', '?'] },
-  { english: ['8', '*'], russian: ['8', '*'] },
-  { english: ['9', '('], russian: ['9', '('] },
-  { english: ['0', ')'], russian: ['0', ')'] },
-  { english: ['-', '_'], russian: ['-', '_'] },
-  { english: ['=', '+'], russian: ['=', '+'] },
-  { english: ['Backspace', 'Backspace'], russian: ['Backspace', 'Backspace'] },
-  { english: ['Tab', 'Tab'], russian: ['Tab', 'Tab'] },
-  { english: ['q', 'Q'], russian: ['й', 'Й'] },
-  { english: ['w', 'w'], russian: ['ц', 'Ц'] },
-  { english: ['e', 'E'], russian: ['у', 'У'] },
-  { english: ['r', 'R'], russian: ['к', 'К'] },
-  { english: ['t', 'T'], russian: ['е', 'Е'] },
-  { english: ['y', 'Y'], russian: ['н', 'Н'] },
-  { english: ['u', 'U'], russian: ['г', 'Г'] },
-  { english: ['i', 'I'], russian: ['ш', 'Ш'] },
-  { english: ['o', 'O'], russian: ['щ', 'Щ'] },
-  { english: ['p', 'P'], russian: ['з', 'З'] },
-  { english: ['[', '{'], russian: ['х', 'Х'] },
-  { english: [']', '}'], russian: ['ъ', 'Ъ'] },
-  { english: ['Del', 'Del'], russian: ['Del', 'Del'] },
-  { english: ['Caps', 'Caps'], russian: ['Caps', 'Caps'] },
-  { english: ['a', 'A'], russian: ['ф', 'Ф'] },
-  { english: ['s', 'S'], russian: ['ы', 'ы'] },
-  { english: ['d', 'D'], russian: ['в', 'В'] },
-  { english: ['f', 'F'], russian: ['а', 'А'] },
-  { english: ['g', 'G'], russian: ['п', 'П'] },
-  { english: ['h', 'H'], russian: ['р', 'Р'] },
-  { english: ['j', 'J'], russian: ['о', 'О'] },
-  { english: ['k', 'K'], russian: ['л', 'Л'] },
-  { english: ['l', 'L'], russian: ['д', 'Д'] },
-  { english: [';', ':'], russian: ['ж', 'Ж'] },
-  { english: ['\'', '"'], russian: ['э', 'Э'] },
-  { english: ['\\', '|'], russian: ['\\', '/'] },
-  { english: ['Enter', 'Enter'], russian: ['Enter', 'Enter'] },
-  { english: ['Shift', 'Shift'], russian: ['Shift', 'Shift'] },
-  { english: ['z', 'Z'], russian: ['я', 'Я'] },
-  { english: ['x', 'X'], russian: ['ч', 'Ч'] },
-  { english: ['c', 'C'], russian: ['с', 'С'] },
-  { english: ['v', 'V'], russian: ['м', 'М'] },
-  { english: ['b', 'B'], russian: ['и', 'И'] },
-  { english: ['n', 'N'], russian: ['т', 'Т'] },
-  { english: ['m', 'M'], russian: ['ь', 'Ь'] },
-  { english: [',', '<'], russian: ['б', 'Б'] },
-  { english: ['.', '>'], russian: ['ю', 'Ю'] },
-  { english: ['?', '/'], russian: ['.', ','] },
-  { english: ['↑', '↑'], russian: ['↑', '↑'] },
-  { english: ['Shift', 'Shift'], russian: ['Shift', 'Shift'] },
-  { english: ['Ctrl'], russian: ['Ctrl', 'Ctrl'] },
-  { english: ['Win'], russian: ['Win', 'Win'] },
-  { english: ['Alt'], russian: ['Alt', 'Alt'] },
-  { english: [''], russian: ['', ''] },
-  { english: ['Alt'], russian: ['Alt', 'Alt'] },
-  { english: ['←', '←'], russian: ['←', '←'] },
-  { english: ['↓', '↓'], russian: ['↓', '↓'] },
-  { english: ['→', '→'], russian: ['→', '→'] },
-  { english: ['Ctrl'], russian: ['Ctrl', 'Ctrl'] },
+  { english: ['`', '~', '`'], russian: ['ё', 'Ё'] },
+  { english: ['1', '!', '1'], russian: ['1', '!'] },
+  { english: ['2', '@', '2'], russian: ['2', '"'] },
+  { english: ['3', '#', '3'], russian: ['3', '№'] },
+  { english: ['4', '$', '4'], russian: ['4', ';'] },
+  { english: ['5', '%', '5'], russian: ['5', '%'] },
+  { english: ['6', '^', '6'], russian: ['6', ':'] },
+  { english: ['7', '&', '7'], russian: ['7', '?'] },
+  { english: ['8', '*', '8'], russian: ['8', '*'] },
+  { english: ['9', '(', '9'], russian: ['9', '('] },
+  { english: ['0', ')', '0'], russian: ['0', ')'] },
+  { english: ['-', '_', '-'], russian: ['-', '_'] },
+  { english: ['=', '+', '='], russian: ['=', '+'] },
+  { english: ['Backspace', 'Backspace', 'Backspace'], russian: ['Backspace', 'Backspace'] },
+  { english: ['Tab', 'Tab', 'Tab'], russian: ['Tab', 'Tab'] },
+  { english: ['q', 'Q', 'Q'], russian: ['й', 'Й'] },
+  { english: ['w', 'W', 'W'], russian: ['ц', 'Ц'] },
+  { english: ['e', 'E', 'E'], russian: ['у', 'У'] },
+  { english: ['r', 'R', 'R'], russian: ['к', 'К'] },
+  { english: ['t', 'T', 'T'], russian: ['е', 'Е'] },
+  { english: ['y', 'Y', 'Y'], russian: ['н', 'Н'] },
+  { english: ['u', 'U', 'U'], russian: ['г', 'Г'] },
+  { english: ['i', 'I', 'I'], russian: ['ш', 'Ш'] },
+  { english: ['o', 'O', 'O'], russian: ['щ', 'Щ'] },
+  { english: ['p', 'P', 'P'], russian: ['з', 'З'] },
+  { english: ['[', '{', '['], russian: ['х', 'Х'] },
+  { english: [']', '}', ']'], russian: ['ъ', 'Ъ'] },
+  { english: ['Del', 'Del', 'Del'], russian: ['Del', 'Del'] },
+  { english: ['Caps', 'Caps', 'Caps'], russian: ['Caps', 'Caps'] },
+  { english: ['a', 'A', 'A'], russian: ['ф', 'Ф'] },
+  { english: ['s', 'S', 'S'], russian: ['ы', 'ы'] },
+  { english: ['d', 'D', 'D'], russian: ['в', 'В'] },
+  { english: ['f', 'F', 'F'], russian: ['а', 'А'] },
+  { english: ['g', 'G', 'G'], russian: ['п', 'П'] },
+  { english: ['h', 'H', 'H'], russian: ['р', 'Р'] },
+  { english: ['j', 'J', 'J'], russian: ['о', 'О'] },
+  { english: ['k', 'K', 'K'], russian: ['л', 'Л'] },
+  { english: ['l', 'L', 'L'], russian: ['д', 'Д'] },
+  { english: [';', ':', ';'], russian: ['ж', 'Ж'] },
+  { english: ['\'', '"', '\''], russian: ['э', 'Э'] },
+  { english: ['\\', '|', '\\'], russian: ['\\', '/'] },
+  { english: ['Enter', 'Enter', 'Enter'], russian: ['Enter', 'Enter'] },
+  { english: ['Shift', 'Shift', 'Shift'], russian: ['Shift', 'Shift'] },
+  { english: ['z', 'Z', 'Z'], russian: ['я', 'Я'] },
+  { english: ['x', 'X', 'X'], russian: ['ч', 'Ч'] },
+  { english: ['c', 'C', 'C'], russian: ['с', 'С'] },
+  { english: ['v', 'V', 'V'], russian: ['м', 'М'] },
+  { english: ['b', 'B', 'B'], russian: ['и', 'И'] },
+  { english: ['n', 'N', 'N'], russian: ['т', 'Т'] },
+  { english: ['m', 'M', 'M'], russian: ['ь', 'Ь'] },
+  { english: [',', '<', '<'], russian: ['б', 'Б'] },
+  { english: ['.', '>', '>'], russian: ['ю', 'Ю'] },
+  { english: ['?', '/', '/'], russian: ['.', ','] },
+  { english: ['↑', '↑', '↑'], russian: ['↑', '↑'] },
+  { english: ['Shift', 'Shift', 'Shift'], russian: ['Shift', 'Shift'] },
+  { english: ['Ctrl', 'Ctrl', 'Ctrl'], russian: ['Ctrl', 'Ctrl'] },
+  { english: ['Win', 'Win', 'Win'], russian: ['Win', 'Win'] },
+  { english: ['Alt', 'Alt', 'Alt'], russian: ['Alt', 'Alt'] },
+  { english: ['', '', ''], russian: ['', ''] },
+  { english: ['Alt', 'Alt', 'Alt'], russian: ['Alt', 'Alt'] },
+  { english: ['←', '←', '←'], russian: ['←', '←'] },
+  { english: ['↓', '↓', '↓'], russian: ['↓', '↓'] },
+  { english: ['→', '→', '→'], russian: ['→', '→'] },
+  { english: ['Ctrl', 'Ctrl', 'Ctrl'], russian: ['Ctrl', 'Ctrl'] },
 ];
 
-function fillKeyboard() {
+let capsOn = false;
+function fillKeyboard(caseIndex) {
   symbols.forEach((el) => {
-    const key = new Key(el.english[0]).render();
+    const key = new Key(el.english[caseIndex]).render();
     switch (el.english[0]) {
       case 'Backspace':
       case 'Caps':
@@ -141,13 +142,16 @@ function handleCLick(event) {
       textarea.value += '    ';
       break;
     case 'Del':
-      console.log(textarea.value.length);
-      console.log(textarea.selectionStart);
       if (textarea.selectionStart < textarea.value.length) {
         textarea.value = textarea.value.slice(0, textarea.selectionStart)
         + textarea.value.slice(textarea.selectionStart + 1);
         textarea.selectionStart = cursorPosit;
       }
+      break;
+    case 'Caps':
+      keyboard.innerHTML = '';
+      if (capsOn) { fillKeyboard(0); capsOn = false; } else { fillKeyboard(2); capsOn = true; }
+
       break;
     default:
       let str1 = textarea.value.slice(0,textarea.selectionStart);
@@ -158,6 +162,6 @@ function handleCLick(event) {
   }
 }
 
-fillKeyboard();
+fillKeyboard(0);
 
 keyboard.addEventListener('click', handleCLick);
