@@ -151,7 +151,9 @@ function handleCLick(event) {
     case 'Caps':
       keyboard.innerHTML = '';
       if (capsOn) { fillKeyboard(0); capsOn = false; } else { fillKeyboard(2); capsOn = true; }
-
+      break;
+    case 'Enter':
+      textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
       break;
     default:
       let str1 = textarea.value.slice(0,textarea.selectionStart);
