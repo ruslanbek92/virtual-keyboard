@@ -129,12 +129,6 @@ function fillKeyboard(caseIndex) {
   });
 }
 
-function handleMouseOver(e) {
-console.log(e.target);
-console.log(e.repeat);
-
-}
-
 function handleCLick(event) {
   const cursorPosit = textarea.selectionStart;
   switch (event.target.innerText) {
@@ -167,12 +161,12 @@ function handleCLick(event) {
       fillKeyboard(1);
       shiftOn = true;
       break;
+    case '':
+      textarea.value = textarea.value.slice(0, textarea.selectionStart) + ' ' + textarea.value.slice(textarea.selectionStart);
+      break;
     default:
-      let str1 = textarea.value.slice(0,textarea.selectionStart);
-      let str2 = textarea.value.slice(textarea.selectionStart);
-      str1 = str1+ event.target.innerText;
-      textarea.value = str1 + str2;
-
+      textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.target.innerText
+      + textarea.value.slice(textarea.selectionStart);
       if (shiftOn) {
         shiftOn = false;
         keyboard.innerHTML = '';
@@ -185,4 +179,3 @@ function handleCLick(event) {
 fillKeyboard(0);
 
 keyboard.addEventListener('click', handleCLick);
-keyboard.addEventListener('mouseover', handleMouseOver);
