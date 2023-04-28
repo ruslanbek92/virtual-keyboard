@@ -28,11 +28,8 @@ class Key {
 
   render() {
     const key = document.createElement('div');
-    const value = document.createElement('p');
     key.className = 'key';
-    value.className = 'value';
-    value.innerText = `${this.value}`;
-    key.prepend(value);
+    key.innerText = `${this.value}`;
     return key;
   }
 }
@@ -126,9 +123,35 @@ function fillKeyboard() {
         break;
       default:
     }
-    console.log(key);
     keyboard.append(key);
   });
 }
 
+function handleCLick(event){
+  
+  console.log(textarea.selectionStart);
+  switch (event.target.innerText) {
+    case 'Backspace':
+      let arr = textarea.value.split('');
+      arr.length = (arr.length !== 0) ?  arr.length-1 : arr.length;
+      textarea.value = arr.join('');
+      break;
+    case 'Tab':
+      textarea.value = textarea.value + '    ';
+      break;
+    case 'Del':
+      textarea.value = textarea.value + '    ';
+      break;  
+    default:
+      let str1 = textarea.value.slice(0,textarea.selectionStart);
+      let str2 = textarea.value.slice(textarea.selectionStart);
+      str1 = str1+ event.target.innerText;
+      textarea.value = str1 + str2;
+      break;
+  }
+
+
+}
 fillKeyboard();
+
+keyboard.addEventListener('click', handleCLick);
