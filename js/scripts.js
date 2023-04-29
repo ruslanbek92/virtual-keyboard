@@ -107,6 +107,8 @@ let shiftOn = false;
 let largeKeys = null;
 let caps = null;
 let shift = [];
+
+
 function fillKeyboard(caseIndex) {
   symbols.forEach((el) => {
     const key = new Key(el.english[caseIndex]).render();
@@ -162,7 +164,7 @@ function registerShiftListeners (){
 });
 }
 function handleCLick(event) {
-  const cursorPosit = textarea.selectionStart;
+   cursorPosit = textarea.selectionStart;
   event.target.classList.add('key_pressed');
 
   switch (event.target.innerText) {
@@ -174,7 +176,9 @@ function handleCLick(event) {
       }
       break;
     case 'Tab':
-      textarea.value += '    ';
+      textarea.value = textarea.value.slice(0,textarea.selectionStart) + '    ' 
+      + textarea.value.slice(textarea.selectionStart);
+      textarea.selectionStart = cursorPosit + 4;
       break;
     case 'Del':
       if (textarea.selectionStart < textarea.value.length) {
@@ -187,11 +191,13 @@ function handleCLick(event) {
       break;
     case 'Enter':
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
+      textarea.selectionStart = cursorPosit + 1;
       break;
     case 'Shift':
       break;
     case '':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + ' ' + textarea.value.slice(textarea.selectionStart);
+      textarea.selectionStart = cursorPosit + 1;
       break;
     default:
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.target.innerText
@@ -200,10 +206,14 @@ function handleCLick(event) {
         shiftOn = false;
         keyboard.innerHTML = '';
         fillKeyboard(0);
+        textarea.selectionStart = cursorPosit + 1;
+        console.log(cursorPosit);
+        console.log(textarea.selectionStart);
         getCapsAndShift();
         registerShiftListeners();
         registerCapsListeners();
       }
+      textarea.selectionStart = cursorPosit + 1;
       break;
   }
 }
