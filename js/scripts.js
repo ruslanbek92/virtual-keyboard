@@ -110,7 +110,7 @@ let shift = [];
 function fillKeyboard(caseIndex) {
   symbols.forEach((el) => {
     const key = new Key(el.english[caseIndex]).render();
-    switch (el.english[0]) {
+    switch (el.english[caseIndex]) {
       case 'Backspace':
       case 'Caps':
       case 'Shift':
@@ -144,18 +144,27 @@ largeKeys.forEach((el) => {
   }
 });
 }
-
+function addHighlightClass(e) { 
+  e.stopPropagation();
+  e.target.classList.add('key_pressed');
+}
 function registerCapsListeners() {
-  caps.addEventListener('click', (e) => { 
-    e.stopPropagation();
-    e.target.classList.add('key_pressed');
- });
+  caps.addEventListener('click', addHighlightClass);
  
  caps.addEventListener('animationend', handleAnimEndForCaps);
+}
+
+function registerShiftListeners (){
+ shift.forEach((el) => {
+  el.addEventListener('click', addHighlightClass );
+  el.addEventListener('animationend', handleAnimEndForShift);
+  
+});
 }
 function handleCLick(event) {
   const cursorPosit = textarea.selectionStart;
   event.target.classList.add('key_pressed');
+
   switch (event.target.innerText) {
     case 'Backspace':
       if (textarea.selectionStart !== 0) {
@@ -180,9 +189,6 @@ function handleCLick(event) {
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
       break;
     case 'Shift':
-      keyboard.innerHTML = '';
-      fillKeyboard(1);
-      shiftOn = true;
       break;
     case '':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + ' ' + textarea.value.slice(textarea.selectionStart);
@@ -194,6 +200,9 @@ function handleCLick(event) {
         shiftOn = false;
         keyboard.innerHTML = '';
         fillKeyboard(0);
+        getCapsAndShift();
+        registerShiftListeners();
+        registerCapsListeners();
       }
       break;
   }
@@ -210,12 +219,21 @@ function handleAnimEndForCaps() {
       };
       getCapsAndShift();
       registerCapsListeners();
-      
+      registerShiftListeners();
 }
 
+function handleAnimEndForShift() {
+  keyboard.innerHTML = '';
+  fillKeyboard(1);
+  shiftOn = true;
+  getCapsAndShift();
+  registerCapsListeners();
+  registerShiftListeners();
+}
 fillKeyboard(0);
 getCapsAndShift();
 
 keyboard.addEventListener('click', handleCLick);
 keyboard.addEventListener('animationend', (e) => { e.target.classList.remove('key_pressed') });
 registerCapsListeners();
+registerShiftListeners();
