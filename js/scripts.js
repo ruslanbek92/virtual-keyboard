@@ -103,6 +103,10 @@ const symbols = [
 
 let capsOn = false;
 let shiftOn = false;
+
+let largeKeys = null;
+let caps = null;
+let shift = [];
 function fillKeyboard(caseIndex) {
   symbols.forEach((el) => {
     const key = new Key(el.english[caseIndex]).render();
@@ -129,6 +133,26 @@ function fillKeyboard(caseIndex) {
   });
 }
 
+function getCapsAndShift(){
+  largeKeys = keyboard.querySelectorAll('.key_large');
+
+largeKeys.forEach((el) => {
+  if(el.textContent === 'Caps'){
+    caps = el;
+  } else if (el.textContent === 'Shift') {
+    shift.push(el);
+  }
+});
+}
+
+function registerCapsListeners() {
+  caps.addEventListener('click', (e) => { 
+    e.stopPropagation();
+    e.target.classList.add('key_pressed');
+ });
+ 
+ caps.addEventListener('animationend', handleAnimEndForCaps);
+}
 function handleCLick(event) {
   const cursorPosit = textarea.selectionStart;
   event.target.classList.add('key_pressed');
@@ -151,9 +175,6 @@ function handleCLick(event) {
       }
       break;
     case 'Caps':
-      keyboard.innerHTML = '';
-      if (capsOn) { fillKeyboard(0); capsOn = false; } else { fillKeyboard(2); capsOn = true; }
-      
       break;
     case 'Enter':
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
@@ -178,7 +199,23 @@ function handleCLick(event) {
   }
 }
 
+function handleAnimEndForCaps() {
+      keyboard.innerHTML = '';
+      if (capsOn) { 
+        fillKeyboard(0); 
+        capsOn = false; 
+      } else { 
+        fillKeyboard(2); 
+        capsOn = true; 
+      };
+      getCapsAndShift();
+      registerCapsListeners();
+      
+}
+
 fillKeyboard(0);
+getCapsAndShift();
 
 keyboard.addEventListener('click', handleCLick);
 keyboard.addEventListener('animationend', (e) => { e.target.classList.remove('key_pressed') });
+registerCapsListeners();
