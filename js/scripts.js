@@ -37,70 +37,70 @@ class Key {
 }
 
 const symbols = [
-  { english: ['`', '~', '`'], russian: ['ё', 'Ё'], code:'Backquote' },
-  { english: ['1', '!', '1'], russian: ['1', '!'], code:'Digit1' },
-  { english: ['2', '@', '2'], russian: ['2', '"'], code:'Digit2' },
-  { english: ['3', '#', '3'], russian: ['3', '№'], code:'Digit3' },
-  { english: ['4', '$', '4'], russian: ['4', ';'], code:'Digit4' },
-  { english: ['5', '%', '5'], russian: ['5', '%'], code:'Digit5' },
-  { english: ['6', '^', '6'], russian: ['6', ':'], code:'Digit6' },
-  { english: ['7', '&', '7'], russian: ['7', '?'], code:'Digit7' },
-  { english: ['8', '*', '8'], russian: ['8', '*'], code:'Digit8' },
-  { english: ['9', '(', '9'], russian: ['9', '('], code:'Digit9' },
-  { english: ['0', ')', '0'], russian: ['0', ')'], code:'Digit0' },
-  { english: ['-', '_', '-'], russian: ['-', '_'], code:'Minus' },
-  { english: ['=', '+', '='], russian: ['=', '+'], code:'Equal' },
-  { english: ['Backspace', 'Backspace', 'Backspace'], russian: ['Backspace', 'Backspace'], code: 'Backspace' },
-  { english: ['Tab', 'Tab', 'Tab'], russian: ['Tab', 'Tab'], code: 'Tab' },
-  { english: ['q', 'Q', 'Q'], russian: ['й', 'Й'], code: 'KeyQ'},
-  { english: ['w', 'W', 'W'], russian: ['ц', 'Ц'], code: 'KeyW'},
-  { english: ['e', 'E', 'E'], russian: ['у', 'У'], code: 'KeyE'},
-  { english: ['r', 'R', 'R'], russian: ['к', 'К'], code: 'KeyR'},
-  { english: ['t', 'T', 'T'], russian: ['е', 'Е'], code: 'KeyT'},
-  { english: ['y', 'Y', 'Y'], russian: ['н', 'Н'], code: 'KeyY'},
-  { english: ['u', 'U', 'U'], russian: ['г', 'Г'], code: 'KeyU'},
-  { english: ['i', 'I', 'I'], russian: ['ш', 'Ш'], code: 'KeyI'},
-  { english: ['o', 'O', 'O'], russian: ['щ', 'Щ'], code: 'KeyO'},
-  { english: ['p', 'P', 'P'], russian: ['з', 'З'], code: 'KeyP'},
-  { english: ['[', '{', '['], russian: ['х', 'Х'], code: 'BracketLeft'},
-  { english: [']', '}', ']'], russian: ['ъ', 'Ъ'], code: 'BracketRight'},
-  { english: ['Del', 'Del', 'Del'], russian: ['Del', 'Del'], code: 'Delete' },
-  { english: ['Caps', 'Caps', 'Caps'], russian: ['Caps', 'Caps'], code: 'CapsLock' },
-  { english: ['a', 'A', 'A'], russian: ['ф', 'Ф'], code: 'KeyA' },
-  { english: ['s', 'S', 'S'], russian: ['ы', 'ы'], code: 'KeyS' },
-  { english: ['d', 'D', 'D'], russian: ['в', 'В'], code: 'KeyD' },
-  { english: ['f', 'F', 'F'], russian: ['а', 'А'], code: 'KeyF' },
-  { english: ['g', 'G', 'G'], russian: ['п', 'П'], code: 'KeyG' },
-  { english: ['h', 'H', 'H'], russian: ['р', 'Р'], code: 'KeyH' },
-  { english: ['j', 'J', 'J'], russian: ['о', 'О'], code: 'KeyJ' },
-  { english: ['k', 'K', 'K'], russian: ['л', 'Л'], code: 'KeyK' },
-  { english: ['l', 'L', 'L'], russian: ['д', 'Д'], code: 'KeyL' },
-  { english: [';', ':', ';'], russian: ['ж', 'Ж'], code: 'Semicolon' },
-  { english: ['\'', '"', '\''], russian: ['э', 'Э'] , code:'Quote'},
-  { english: ['\\', '|', '\\'], russian: ['\\', '/'], code:'Backslash' },
-  { english: ['Enter', 'Enter', 'Enter'], russian: ['Enter', 'Enter'], code: 'Enter' },
-  { english: ['Shift', 'Shift', 'Shift'], russian: ['Shift', 'Shift'], code: 'ShiftLeft' },
-  { english: ['z', 'Z', 'Z'], russian: ['я', 'Я'], code: 'KeyZ'},
-  { english: ['x', 'X', 'X'], russian: ['ч', 'Ч'], code: 'KeyX'},
-  { english: ['c', 'C', 'C'], russian: ['с', 'С'], code: 'KeyC'},
-  { english: ['v', 'V', 'V'], russian: ['м', 'М'], code: 'KeyV'},
-  { english: ['b', 'B', 'B'], russian: ['и', 'И'], code: 'KeyB'},
-  { english: ['n', 'N', 'N'], russian: ['т', 'Т'], code: 'KeyN'},
-  { english: ['m', 'M', 'M'], russian: ['ь', 'Ь'], code: 'KeyM'},
-  { english: [',', '<', '<'], russian: ['б', 'Б'], code: 'Comma'},
-  { english: ['.', '>', '>'], russian: ['ю', 'Ю'], code: 'Period'},
-  { english: ['?', '/', '/'], russian: ['.', ','], code: 'Slash'},
-  { english: ['↑', '↑', '↑'], russian: ['↑', '↑'], code: 'ArrowUp'},
-  { english: ['Shift', 'Shift', 'Shift'], russian: ['Shift', 'Shift'], code: 'ShiftRight' },
-  { english: ['Ctrl', 'Ctrl', 'Ctrl'], russian: ['Ctrl', 'Ctrl'], code: 'ControlLeft' },
-  { english: ['Win', 'Win', 'Win'], russian: ['Win', 'Win'], code:'MetaLeft'},
-  { english: ['Alt', 'Alt', 'Alt'], russian: ['Alt', 'Alt'], code:'AltLeft'},
-  { english: ['', '', ''], russian: ['', ''], code: 'Space' },
-  { english: ['Alt', 'Alt', 'Alt'], russian: ['Alt', 'Alt'], code: 'AltRight' },
-  { english: ['←', '←', '←'], russian: ['←', '←'], code:'ArrowLeft' },
-  { english: ['↓', '↓', '↓'], russian: ['↓', '↓'], code:'ArrowDown' },
-  { english: ['→', '→', '→'], russian: ['→', '→'], code:'ArrowRight' },
-  { english: ['Ctrl', 'Ctrl', 'Ctrl'], russian: ['Ctrl', 'Ctrl'], code:'ControlRight' },
+  { english: ['`', '~', '`'], russian: ['ё', 'Ё', 'Ё'], code:'Backquote' },
+  { english: ['1', '!', '1'], russian: ['1', '!', '1' ], code:'Digit1' },
+  { english: ['2', '@', '2'], russian: ['2', '"', '2' ], code:'Digit2' },
+  { english: ['3', '#', '3'], russian: ['3', '№', '3' ], code:'Digit3' },
+  { english: ['4', '$', '4'], russian: ['4', ';', '4' ], code:'Digit4' },
+  { english: ['5', '%', '5'], russian: ['5', '%', '5' ], code:'Digit5' },
+  { english: ['6', '^', '6'], russian: ['6', ':', '6' ], code:'Digit6' },
+  { english: ['7', '&', '7'], russian: ['7', '?', '7' ], code:'Digit7' },
+  { english: ['8', '*', '8'], russian: ['8', '*', '8' ], code:'Digit8' },
+  { english: ['9', '(', '9'], russian: ['9', '(', '9' ], code:'Digit9' },
+  { english: ['0', ')', '0'], russian: ['0', ')', '0' ], code:'Digit0' },
+  { english: ['-', '_', '-'], russian: ['-', '_', '-' ], code:'Minus' },
+  { english: ['=', '+', '='], russian: ['=', '+', '=' ], code:'Equal' },
+  { english: ['Backspace', 'Backspace', 'Backspace'], russian: ['Backspace', 'Backspace', 'Backspace'], code: 'Backspace' },
+  { english: ['Tab', 'Tab', 'Tab'], russian: ['Tab', 'Tab', 'Tab'], code: 'Tab' },
+  { english: ['q', 'Q', 'Q'], russian: ['й', 'Й','Й'], code: 'KeyQ'},
+  { english: ['w', 'W', 'W'], russian: ['ц', 'Ц','Ц'], code: 'KeyW'},
+  { english: ['e', 'E', 'E'], russian: ['у', 'У','У'], code: 'KeyE'},
+  { english: ['r', 'R', 'R'], russian: ['к', 'К','К'], code: 'KeyR'},
+  { english: ['t', 'T', 'T'], russian: ['е', 'Е','Е'], code: 'KeyT'},
+  { english: ['y', 'Y', 'Y'], russian: ['н', 'Н','Н'], code: 'KeyY'},
+  { english: ['u', 'U', 'U'], russian: ['г', 'Г','Г'], code: 'KeyU'},
+  { english: ['i', 'I', 'I'], russian: ['ш', 'Ш','Ш'], code: 'KeyI'},
+  { english: ['o', 'O', 'O'], russian: ['щ', 'Щ','Щ'], code: 'KeyO'},
+  { english: ['p', 'P', 'P'], russian: ['з', 'З','З'], code: 'KeyP'},
+  { english: ['[', '{', '['], russian: ['х', 'Х','Х'], code: 'BracketLeft'},
+  { english: [']', '}', ']'], russian: ['ъ', 'Ъ','Ъ'], code: 'BracketRight'},
+  { english: ['Del', 'Del', 'Del'], russian: ['Del', 'Del', 'Del'], code: 'Delete' },
+  { english: ['Caps', 'Caps', 'Caps'], russian: ['Caps', 'Caps', 'Caps'], code: 'CapsLock' },
+  { english: ['a', 'A', 'A'], russian: ['ф', 'Ф', 'Ф'], code: 'KeyA' },
+  { english: ['s', 'S', 'S'], russian: ['ы', 'ы', 'ы'], code: 'KeyS' },
+  { english: ['d', 'D', 'D'], russian: ['в', 'В', 'В'], code: 'KeyD' },
+  { english: ['f', 'F', 'F'], russian: ['а', 'А', 'А'], code: 'KeyF' },
+  { english: ['g', 'G', 'G'], russian: ['п', 'П', 'П'], code: 'KeyG' },
+  { english: ['h', 'H', 'H'], russian: ['р', 'Р', 'Р'], code: 'KeyH' },
+  { english: ['j', 'J', 'J'], russian: ['о', 'О', 'О'], code: 'KeyJ' },
+  { english: ['k', 'K', 'K'], russian: ['л', 'Л', 'Л'], code: 'KeyK' },
+  { english: ['l', 'L', 'L'], russian: ['д', 'Д', 'Д'], code: 'KeyL' },
+  { english: [';', ':', ';'], russian: ['ж', 'Ж', 'Ж'], code: 'Semicolon' },
+  { english: ['\'', '"', '\''], russian: ['э', 'Э', 'Э'] , code:'Quote'},
+  { english: ['\\', '|', '\\'], russian: ['\\', '/', '\\'], code:'Backslash' },
+  { english: ['Enter', 'Enter', 'Enter'], russian: ['Enter', 'Enter', 'Enter'], code: 'Enter' },
+  { english: ['Shift', 'Shift', 'Shift'], russian: ['Shift', 'Shift', 'Shift'], code: 'ShiftLeft' },
+  { english: ['z', 'Z', 'Z'], russian: ['я', 'Я','Я'], code: 'KeyZ'},
+  { english: ['x', 'X', 'X'], russian: ['ч', 'Ч','Ч'], code: 'KeyX'},
+  { english: ['c', 'C', 'C'], russian: ['с', 'С','С'], code: 'KeyC'},
+  { english: ['v', 'V', 'V'], russian: ['м', 'М','М'], code: 'KeyV'},
+  { english: ['b', 'B', 'B'], russian: ['и', 'И','И'], code: 'KeyB'},
+  { english: ['n', 'N', 'N'], russian: ['т', 'Т','Т'], code: 'KeyN'},
+  { english: ['m', 'M', 'M'], russian: ['ь', 'Ь','Ь'], code: 'KeyM'},
+  { english: [',', '<', '<'], russian: ['б', 'Б','Б'], code: 'Comma'},
+  { english: ['.', '>', '>'], russian: ['ю', 'Ю','Ю'], code: 'Period'},
+  { english: ['?', '/', '/'], russian: ['.', ',', '.'], code: 'Slash'},
+  { english: ['↑', '↑', '↑'], russian: ['↑', '↑', '↑'], code: 'ArrowUp'},
+  { english: ['Shift', 'Shift', 'Shift'], russian: ['Shift', 'Shift', 'Shift'], code: 'ShiftRight' },
+  { english: ['Ctrl', 'Ctrl', 'Ctrl'], russian: ['Ctrl', 'Ctrl', 'Ctrl'], code: 'ControlLeft' },
+  { english: ['Win', 'Win', 'Win'], russian: ['Win', 'Win', 'Win'], code:'MetaLeft'},
+  { english: ['Alt', 'Alt', 'Alt'], russian: ['Alt', 'Alt', 'Alt'], code:'AltLeft'},
+  { english: [' ', ' ', ' '], russian: [' ', ' ', ' '], code: 'Space' },
+  { english: ['Alt', 'Alt', 'Alt'], russian: ['Alt', 'Alt', 'Alt'], code: 'AltRight' },
+  { english: ['←', '←', '←'], russian: ['←', '←', '←'], code:'ArrowLeft' },
+  { english: ['↓', '↓', '↓'], russian: ['↓', '↓', '↓'], code:'ArrowDown' },
+  { english: ['→', '→', '→'], russian: ['→', '→', '→'], code:'ArrowRight' },
+  { english: ['Ctrl', 'Ctrl', 'Ctrl'], russian: ['Ctrl', 'Ctrl', 'Ctrl'], code:'ControlRight' },
 ];
 
 
@@ -120,9 +120,10 @@ if (localStorage.getItem('language')) {
 }
 let langEvent = new Event('lang-change');
 function fillKeyboard(caseIndex, language) {
+  
   symbols.forEach((el) => {
+    console.log(el['russian']);
     const key = new Key(el[`${language}`][caseIndex], el.code).render();
-
     switch (el.english[caseIndex]) {
       case 'Backspace':
       case 'Caps':
@@ -137,7 +138,7 @@ function fillKeyboard(caseIndex, language) {
       case 'Alt':
         key.classList.add('key_medium');
         break;
-      case '':
+      case ' ':
         key.classList.add('key_space');
         break;
       default:
@@ -175,7 +176,9 @@ function registerShiftListeners (){
 });
 }
 function handleCLick(event) {
-  cursorPosit = textarea.selectionStart;
+  console.log(event.target)
+  if (event.target.className !== 'keyboard'){
+    cursorPosit = textarea.selectionStart;
   event.target.classList.add('key_pressed');
 
   switch (event.target.innerText) {
@@ -245,6 +248,7 @@ function handleCLick(event) {
       }
       textarea.selectionStart = cursorPosit + 1;
       break;
+  }
   }
 }
 
@@ -323,6 +327,7 @@ function handleKeyDown(event) {
       break;
     default:
       let symbol = symbols.filter((el) => el.code === event.code)[0][`${lang}`];
+      console.log(symbol);
       if (shiftOn) {
         textarea.value = textarea.value.slice(0, textarea.selectionStart) + symbol[1]
       + textarea.value.slice(textarea.selectionStart);
@@ -333,11 +338,16 @@ function handleKeyDown(event) {
         getCapsAndShift();
         registerShiftListeners();
         registerCapsListeners();
+      }else if(capsOn){
+        textarea.value = textarea.value.slice(0, textarea.selectionStart) + symbol[2]
+      + textarea.value.slice(textarea.selectionStart);
       }else {
         textarea.value = textarea.value.slice(0, textarea.selectionStart) + symbol[0]
       + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
       }
+
+
 
       switchCtrl(0);
       break;
@@ -393,9 +403,14 @@ keyboard.addEventListener('animationend', (e) => { e.target.classList.remove('ke
 registerCapsListeners();
 registerShiftListeners();
 document.addEventListener('lang-change', () => {
+   console.log('lang-change');
    shortcutParag.innerText = `Language : ${lang}`;
    keyboard.innerHTML = '';
    fillKeyboard(0,lang);
+   getCapsAndShift();
+   registerShiftListeners();
+   registerCapsListeners();
+
   });
 body.addEventListener('keydown', handleKeyDown);
 
