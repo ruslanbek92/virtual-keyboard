@@ -24,6 +24,7 @@ body {
     padding: 5px;
     box-sizing: border-box;
     resize: none;
+    font-size: 30px;
 }
 
 .keyboard {
@@ -67,7 +68,10 @@ body {
     flex-basis: 27.9%;
 }
 
-
+.key_highlighted {
+    background-color: rgb(58, 223, 223);
+    transform: scale(0.8);
+}
 
 @keyframes highlight {
     from {
@@ -81,5 +85,4 @@ body {
 .key_pressed {
     animation-name: highlight;
     animation-duration: 0.3s;
-    
-}
+    }

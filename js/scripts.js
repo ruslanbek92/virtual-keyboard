@@ -106,15 +106,18 @@ const symbols = [
 
 let capsOn = false;
 let shiftOn = false;
+let control = false;
 
 let largeKeys = null;
 let caps = null;
 let shift = [];
+let lang = 'english';
 
-
-function fillKeyboard(caseIndex) {
+let langEvent = new Event('lang-change');
+function fillKeyboard(caseIndex, language) {
   symbols.forEach((el) => {
-    const key = new Key(el.english[caseIndex], el.code).render();
+    const key = new Key(el[`${language}`][caseIndex], el.code).render();
+
     switch (el.english[caseIndex]) {
       case 'Backspace':
       case 'Caps':
@@ -177,11 +180,13 @@ function handleCLick(event) {
         + textarea.value.slice(textarea.selectionStart);
         textarea.selectionStart = cursorPosit - 1;
       }
+      switchCtrl(0);
       break;
     case 'Tab':
       textarea.value = textarea.value.slice(0,textarea.selectionStart) + '    ' 
       + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 4;
+      switchCtrl(0);
       break;
     case 'Del':
       if (textarea.selectionStart < textarea.value.length) {
@@ -189,22 +194,38 @@ function handleCLick(event) {
         + textarea.value.slice(textarea.selectionStart + 1);
         textarea.selectionStart = cursorPosit;
       }
+      switchCtrl(0);
       break;
     case 'Caps':
+      switchCtrl(0);
       break;
     case 'Enter':
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
       textarea.selectionStart = cursorPosit + 1;
+      switchCtrl(0);
       break;
     case 'Shift':
+      switchCtrl(0);
       break;
+    case 'Ctrl' :
+      switchCtrl(1); 
+      break;  
+    case 'Alt' :
+      if(control){
+        lang = (lang === 'english') ? 'russian': 'english'; 
+        switchCtrl(0);
+        document.dispatchEvent(langEvent);
+      } 
+      break;    
     case '':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + ' ' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
+      switchCtrl(0);
       break;
     default:
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.target.innerText
       + textarea.value.slice(textarea.selectionStart);
+      switchCtrl(0);
       if (shiftOn) {
         shiftOn = false;
         keyboard.innerHTML = '';
@@ -224,7 +245,6 @@ function handleCLick(event) {
 function handleKeyDown(event) {
   document.getElementById(event.code).classList.add('key_pressed');
   cursorPosit = textarea.selectionStart;
-  console.log(event.key);
   switch (event.key) {
     case 'Backspace':
       if (textarea.selectionStart !== 0) {
@@ -232,11 +252,13 @@ function handleKeyDown(event) {
         + textarea.value.slice(textarea.selectionStart);
         textarea.selectionStart = cursorPosit - 1;
       }
+      switchCtrl(0);
       break;
     case 'Tab':
       textarea.value = textarea.value.slice(0,textarea.selectionStart) + '    ' 
       + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 4;
+      switchCtrl(0);
       break;
     case 'Delete':
       if (textarea.selectionStart < textarea.value.length) {
@@ -244,16 +266,30 @@ function handleKeyDown(event) {
         + textarea.value.slice(textarea.selectionStart + 1);
         textarea.selectionStart = cursorPosit;
       }
+      switchCtrl(0);
       break;
     case 'CapsLock':
-      break;
+      switchCtrl(0); 
+    break;
     case 'Enter':
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
       textarea.selectionStart = cursorPosit + 1;
+      switchCtrl(0);
       break;
     case 'Shift': 
       shiftOn = true;
+      switchCtrl(0);
       break;
+    case 'Control': 
+      switchCtrl(1);
+      break;
+    case 'Alt': 
+    if(control){
+      lang = (lang === 'english') ? 'russian': 'english'; 
+      switchCtrl(0);
+      document.dispatchEvent(langEvent);
+    } 
+      break;      
     case '':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + ' ' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
@@ -261,18 +297,22 @@ function handleKeyDown(event) {
       case 'ArrowUp':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + '↑' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
+      switchCtrl(0);
       break;
       case 'ArrowDown':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + '↓' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
+      switchCtrl(0);
       break;
       case 'ArrowLeft':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + '←' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
+      switchCtrl(0);
       break;
       case 'ArrowRight':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + '→' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
+      switchCtrl(0);
       break;
     default:
       if (shiftOn) {
@@ -290,7 +330,7 @@ function handleKeyDown(event) {
       + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
       }
-      
+      switchCtrl(0);
       break;
   }
 
@@ -319,13 +359,36 @@ function handleAnimEndForShift() {
   registerCapsListeners();
   registerShiftListeners();
 }
-fillKeyboard(0);
-getCapsAndShift();
 
+function switchCtrl(switchStatus) {
+  controlLeft = document.getElementById('ControlLeft');
+  controlRight = document.getElementById('ControlRight');
+  if (switchStatus !== 0) {
+    control = true;
+    controlLeft.classList.add('key_highlighted');
+    controlRight.classList.add('key_highlighted');
+  } else {
+    control = false;
+    controlLeft.classList.remove('key_highlighted');
+    controlRight.classList.remove('key_highlighted');
+  }
+  
+ 
+
+  
+}
+fillKeyboard(0,lang);
+getCapsAndShift();
 keyboard.addEventListener('click', handleCLick);
-keyboard.addEventListener('animationend', (e) => { e.target.classList.remove('key_pressed') });
+keyboard.addEventListener('animationend', (e) => { e.target.classList.remove('key_pressed');
+
+});
 registerCapsListeners();
 registerShiftListeners();
-
+document.addEventListener('lang-change', () => {
+   shortcutParag.innerText = `Language : ${lang}`;
+   keyboard.innerHTML = '';
+   fillKeyboard(0,lang);
+  });
 body.addEventListener('keydown', handleKeyDown);
 
