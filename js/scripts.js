@@ -16,11 +16,10 @@ keyboard.className = 'keyboard';
 heading.innerText = 'Virtual Keyboard';
 textarea.readOnly=true;
 description.innerText = 'This virtual keyboard is made for Windows OS, you can alter the language layout with Ctrl + Alt';
-shortcutParag.innerText = 'Language:English';
 
 container.prepend(heading, textarea, keyboard, description, shortcutParag);
 body.prepend(container);
-// console.log(heading, shortcutParag, description);
+
 
 class Key {
   constructor(value, id) {
@@ -104,6 +103,7 @@ const symbols = [
   { english: ['Ctrl', 'Ctrl', 'Ctrl'], russian: ['Ctrl', 'Ctrl'], code:'ControlRight' },
 ];
 
+
 let capsOn = false;
 let shiftOn = false;
 let control = false;
@@ -111,8 +111,13 @@ let control = false;
 let largeKeys = null;
 let caps = null;
 let shift = [];
-let lang = 'english';
-
+let lang;
+if (localStorage.getItem('language')) {
+  lang = localStorage.getItem('language');
+} else {
+  localStorage.setItem('language', 'english');
+  lang = localStorage.getItem('language');
+}
 let langEvent = new Event('lang-change');
 function fillKeyboard(caseIndex, language) {
   symbols.forEach((el) => {
@@ -212,7 +217,8 @@ function handleCLick(event) {
       break;  
     case 'Alt' :
       if(control){
-        lang = (lang === 'english') ? 'russian': 'english'; 
+        localStorage.getItem('language') === 'english' ? localStorage.setItem('language', 'russian') :  localStorage.setItem('language', 'english');
+        lang = localStorage.getItem('language');
         switchCtrl(0);
         document.dispatchEvent(langEvent);
       } 
@@ -285,7 +291,8 @@ function handleKeyDown(event) {
       break;
     case 'Alt': 
     if(control){
-      lang = (lang === 'english') ? 'russian': 'english'; 
+      localStorage.getItem('language') === 'english' ? localStorage.setItem('language', 'russian') :  localStorage.setItem('language', 'english');
+      lang = localStorage.getItem('language');
       switchCtrl(0);
       document.dispatchEvent(langEvent);
     } 
@@ -378,6 +385,7 @@ function switchCtrl(switchStatus) {
   
 }
 fillKeyboard(0,lang);
+shortcutParag.innerText = `Language:${lang}`;
 getCapsAndShift();
 keyboard.addEventListener('click', handleCLick);
 keyboard.addEventListener('animationend', (e) => { e.target.classList.remove('key_pressed');
