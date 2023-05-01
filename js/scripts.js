@@ -249,6 +249,9 @@ function handleCLick(event) {
       case 'Ctrl':
         switchCtrl(1);
         break;
+      case 'Win':
+        switchCtrl(0);
+        break;
       case 'Alt':
         if (control) {
           if (localStorage.getItem('language') === 'english') {
