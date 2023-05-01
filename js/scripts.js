@@ -222,9 +222,9 @@ function handleCLick(event) {
 }
 
 function handleKeyDown(event) {
-  console.log('keydown working')
   document.getElementById(event.code).classList.add('key_pressed');
   cursorPosit = textarea.selectionStart;
+  console.log(event.key);
   switch (event.key) {
     case 'Backspace':
       if (textarea.selectionStart !== 0) {
@@ -251,29 +251,46 @@ function handleKeyDown(event) {
       textarea.value = textarea.value.slice(0, cursorPosit) + '\n' + textarea.value.slice(cursorPosit);
       textarea.selectionStart = cursorPosit + 1;
       break;
-    case 'Shift':
+    case 'Shift': 
+      shiftOn = true;
       break;
     case '':
       textarea.value = textarea.value.slice(0, textarea.selectionStart) + ' ' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
       break;
-    default:
-      console.log('default is working');
-      console.log(event.key);
-      textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.key
-      + textarea.value.slice(textarea.selectionStart);
-      // if (shiftOn) {
-      //   shiftOn = false;
-      //   keyboard.innerHTML = '';
-      //   fillKeyboard(0);
-      //   textarea.selectionStart = cursorPosit + 1;
-      //   console.log(cursorPosit);
-      //   console.log(textarea.selectionStart);
-      //   getCapsAndShift();
-      //   registerShiftListeners();
-      //   registerCapsListeners();
-      // }
+      case 'ArrowUp':
+      textarea.value = textarea.value.slice(0, textarea.selectionStart) + '↑' + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
+      break;
+      case 'ArrowDown':
+      textarea.value = textarea.value.slice(0, textarea.selectionStart) + '↓' + textarea.value.slice(textarea.selectionStart);
+      textarea.selectionStart = cursorPosit + 1;
+      break;
+      case 'ArrowLeft':
+      textarea.value = textarea.value.slice(0, textarea.selectionStart) + '←' + textarea.value.slice(textarea.selectionStart);
+      textarea.selectionStart = cursorPosit + 1;
+      break;
+      case 'ArrowRight':
+      textarea.value = textarea.value.slice(0, textarea.selectionStart) + '→' + textarea.value.slice(textarea.selectionStart);
+      textarea.selectionStart = cursorPosit + 1;
+      break;
+    default:
+      if (shiftOn) {
+        textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.key.toUpperCase()
+      + textarea.value.slice(textarea.selectionStart);
+        shiftOn = false;
+        keyboard.innerHTML = '';
+        fillKeyboard(0);
+        textarea.selectionStart = cursorPosit + 1;
+        getCapsAndShift();
+        registerShiftListeners();
+        registerCapsListeners();
+      }else {
+        textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.key
+      + textarea.value.slice(textarea.selectionStart);
+      textarea.selectionStart = cursorPosit + 1;
+      }
+      
       break;
   }
 
@@ -294,6 +311,7 @@ function handleAnimEndForCaps() {
 }
 
 function handleAnimEndForShift() {
+  console.log('anim end shift');
   keyboard.innerHTML = '';
   fillKeyboard(1);
   shiftOn = true;
