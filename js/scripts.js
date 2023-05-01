@@ -235,7 +235,7 @@ function handleCLick(event) {
       if (shiftOn) {
         shiftOn = false;
         keyboard.innerHTML = '';
-        fillKeyboard(0);
+        fillKeyboard(0,lang);
         textarea.selectionStart = cursorPosit + 1;
         console.log(cursorPosit);
         console.log(textarea.selectionStart);
@@ -322,21 +322,23 @@ function handleKeyDown(event) {
       switchCtrl(0);
       break;
     default:
+      let symbol = symbols.filter((el) => el.code === event.code)[0][`${lang}`];
       if (shiftOn) {
-        textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.key.toUpperCase()
+        textarea.value = textarea.value.slice(0, textarea.selectionStart) + symbol[1]
       + textarea.value.slice(textarea.selectionStart);
         shiftOn = false;
         keyboard.innerHTML = '';
-        fillKeyboard(0);
+        fillKeyboard(0,lang);
         textarea.selectionStart = cursorPosit + 1;
         getCapsAndShift();
         registerShiftListeners();
         registerCapsListeners();
       }else {
-        textarea.value = textarea.value.slice(0, textarea.selectionStart) + event.key
+        textarea.value = textarea.value.slice(0, textarea.selectionStart) + symbol[0]
       + textarea.value.slice(textarea.selectionStart);
       textarea.selectionStart = cursorPosit + 1;
       }
+
       switchCtrl(0);
       break;
   }
@@ -346,10 +348,10 @@ function handleKeyDown(event) {
 function handleAnimEndForCaps() {
       keyboard.innerHTML = '';
       if (capsOn) { 
-        fillKeyboard(0); 
+        fillKeyboard(0, lang); 
         capsOn = false; 
       } else { 
-        fillKeyboard(2); 
+        fillKeyboard(2,lang); 
         capsOn = true; 
       };
       getCapsAndShift();
@@ -360,7 +362,7 @@ function handleAnimEndForCaps() {
 function handleAnimEndForShift() {
   console.log('anim end shift');
   keyboard.innerHTML = '';
-  fillKeyboard(1);
+  fillKeyboard(1,lang);
   shiftOn = true;
   getCapsAndShift();
   registerCapsListeners();
@@ -379,9 +381,6 @@ function switchCtrl(switchStatus) {
     controlLeft.classList.remove('key_highlighted');
     controlRight.classList.remove('key_highlighted');
   }
-  
- 
-
   
 }
 fillKeyboard(0,lang);
